@@ -20,6 +20,8 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
+
+
     <Command className="bg-secondary">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
@@ -42,7 +44,7 @@ const Sidebar = () => {
         <CommandGroup heading="Settings">
           <CommandItem className="cursor-pointer">
             <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
+            <Link href={"/auth"}>LogIn/SignUp</Link>
             <CommandShortcut>cmd+p</CommandShortcut>
           </CommandItem>
           <CommandItem className="cursor-pointer">

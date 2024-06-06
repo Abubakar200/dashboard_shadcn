@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Sarabun } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/navbar";
-import Sidebar from "@/components/sidebar";
+import "./globals.css"
+
+import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const saraBun = Sarabun({
   subsets: ["latin"],
@@ -22,13 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={saraBun.className}>
-        <Navbar />
-        <div className="flex">
-          <div className="hidden md:block h-[1140px] w-[300px]">
-            <Sidebar />
-          </div>
-          <div className="p-5 w-full md:max-w-[1140px]">{children}</div>
-        </div>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem={false}
+            storageKey="dashboard-theme"
+            
+          >
+        {children}
+        <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
